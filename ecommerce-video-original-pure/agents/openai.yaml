@@ -1,0 +1,4 @@
+interface:
+  display_name: "3.0原创视频"
+  short_description: "纯原创电商带货短视频串行生成与质检引擎"
+  default_prompt: "使用 $ecommerce-video-original-pure，按 3.0 原创视频流程生成一条电商带货短视频。"
