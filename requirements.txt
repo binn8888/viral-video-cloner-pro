@@ -1,0 +1,16 @@
+# ROADMAP ONLY — NOT CURRENT RUNTIME DEPENDENCIES
+#
+# This repository currently contains Codex Skill Markdown and YAML files only.
+# It has no Python application, FastAPI service, OpenCV pipeline, model adapter,
+# or local deployment. The packages below are commented-out candidates for
+# future design work and are not required to install or use the current Skills.
+#
+# Do not treat this file as evidence that any Roadmap feature is implemented.
+
+# fastapi
+# uvicorn[standard]
+# opencv-python-headless
+# openai
+# pydantic
+# python-multipart
+# pyyaml
