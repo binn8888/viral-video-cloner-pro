@@ -1,0 +1,4 @@
+interface:
+  display_name: "2.5爆款复刻"
+  short_description: "融合版电商爆款复刻原创短视频串行生成引擎"
+  default_prompt: "使用 $ecommerce-viral-video-clone-hybrid，按 2.5 爆款复刻流程生成电商带货短视频。"
