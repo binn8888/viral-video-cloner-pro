@@ -1,3 +1,5 @@
+> 🌐 Language / 语言：**[English](./README.md)** | [简体中文](./README.zh-CN.md)
+
 # Viral Video Cloner Pro
 
 > Open-source Codex Skill workflows for planning e-commerce short-form video projects.
