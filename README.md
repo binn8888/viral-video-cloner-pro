@@ -1,27 +1,59 @@
 # Viral Video Cloner Pro
 
-> 低 Token 的 Codex 电商爆款复刻与原创视频工作流
+> Open-source Codex Skill workflows for planning e-commerce short-form video projects.
 
-面向电商短视频创作者的 Codex Skills 合集，支持爆款叙事结构复刻和纯原创带货视频创作，覆盖项目简报、脚本、分镜、视觉提示词、音频字幕、合规预检、分段质检与交付归档。
+Viral Video Cloner Pro is a self-hosted collection of Codex Skill definitions for structured e-commerce video planning. The repository currently provides workflow instructions and Codex metadata only. It does **not** contain a runnable video-generation application or a provider inference integration.
 
-## 包含的 Skills
+## Project Status
 
-| Skill | Codex 调用方式 | 用途 |
+### Implemented today
+
+The current repository contains two Codex Skills:
+
+| Skill | Codex invocation | Current scope |
 |---|---|---|
-| 2.5 爆款复刻 | `$ecommerce-viral-video-clone-hybrid` | 分析参考视频的叙事节奏，生成新的带货脚本、分镜和提示词；不搬运原视频画面或完整台词 |
-| 3.0 原创视频 | `$ecommerce-video-original-pure` | 从产品资料、脚本、九宫格或人物参考出发，完成纯原创电商视频策划流程 |
+| Viral-video analysis and adaptation workflow | `$ecommerce-viral-video-clone-hybrid` | Guides reference analysis, narrative adaptation, shot planning, prompt preparation, compliance review, quality checks, and delivery organization. |
+| Original e-commerce video planning workflow | `$ecommerce-video-original-pure` | Guides original concept development, script planning, shot design, prompt preparation, audio and subtitle planning, compliance review, and delivery organization. |
 
-## 核心能力
+The implemented artifacts are declarative `SKILL.md` instructions and `agents/openai.yaml` metadata. They help Codex organize a human-reviewed planning process; they do not invoke video models or render media.
 
-- 爆款叙事结构复刻与纯原创创意双路线
-- 串行阶段控制和人工确认节点
-- 产品、人物与场景一致性基准
-- 长视频自动分段和首尾帧衔接规划
-- 音频、字幕、合规预检与成片 QA 规范
-- 适配 Pika、可灵 AI、即梦 Seedance 和 LibTV 的提示词方案
-- 通过索引复用与全局视觉基准减少重复上下文
+### Not implemented
 
-## 安装
+The following capabilities are **not present in the current codebase**:
+
+- Python application code
+- FastAPI services or HTTP endpoints
+- OpenCV processing
+- Image2-Storyboard processing
+- Seedance 2.0 API or model adapters
+- Automated image or video inference
+- Batch rendering or final-video export
+- A deployable local video-generation service
+
+These items appear only in the Roadmap below.
+
+## Repository Structure
+
+```text
+viral-video-cloner-pro/
+├── ecommerce-viral-video-clone-hybrid/
+│   ├── SKILL.md
+│   └── agents/
+│       └── openai.yaml
+├── ecommerce-video-original-pure/
+│   ├── SKILL.md
+│   └── agents/
+│       └── openai.yaml
+├── LICENSE
+├── README.md
+└── requirements.txt
+```
+
+`requirements.txt` is a roadmap-only planning document. It is not an installation manifest for a working Python application.
+
+## Installation
+
+Clone the repository and copy either or both Skill directories into the local Codex Skills directory:
 
 ```bash
 git clone https://github.com/binn8888/viral-video-cloner-pro.git
@@ -30,31 +62,80 @@ cp -R viral-video-cloner-pro/ecommerce-viral-video-clone-hybrid ~/.codex/skills/
 cp -R viral-video-cloner-pro/ecommerce-video-original-pure ~/.codex/skills/
 ```
 
-安装后重新启动 Codex 或新建任务，让 Skills 列表刷新。
+Restart Codex or begin a new task so the Skill list can refresh.
 
-## 使用
+## Usage
 
-在 Codex 对话中输入：
+Invoke a Skill in Codex:
 
 ```text
 $ecommerce-viral-video-clone-hybrid
 ```
 
-或：
+or:
 
 ```text
 $ecommerce-video-original-pure
 ```
 
-然后按照 Skill 提示提交产品、平台、受众、时长、参考素材等信息。
+Then provide the project brief, product information, audience, platform, target duration, and any authorized reference material requested by the selected workflow.
 
-## 重要说明
+The Skills produce planning guidance and structured production instructions. Any external media-generation step requires separate tools, accounts, authorization, and human approval.
 
-- 本仓库提供的是 Codex 工作流 Skills，不包含 Pika、可灵、Seedance 或 LibTV 的账号、额度和 API 密钥。
-- “复刻”指叙事结构、节奏和镜头功能的重新创作，不代表复制原视频画面、人物、商标或完整台词。
-- 生成或发布广告前，请自行确认素材授权、平台规则和投放地区的广告法规。
-- 这些 Skills 可作为其他智能体平台的改写基础，但当前目录结构与调用方式以 Codex 为准。
+## Responsible Use
+
+“Cloning” in this repository means analyzing and adapting high-level narrative structure, pacing, and shot function. It does not authorize copying protected footage, complete scripts, personal likenesses, trademarks, or other third-party assets.
+
+Users are responsible for:
+
+- obtaining rights to all input and reference material;
+- reviewing advertising, platform, and regional compliance requirements;
+- validating generated prompts and production plans before using external tools; and
+- completing human review before publishing any media.
+
+## Roadmap
+
+The following items are proposals, not implemented features:
+
+1. **Image2-Storyboard specification** — define an input contract for interpreting a single narrative storyboard canvas.
+2. **Seedance 2.0 adapter design** — research a provider-neutral adapter boundary and configuration model.
+3. **Python project foundation** — evaluate typed models, validation, tests, and command-line tooling.
+4. **FastAPI service prototype** — explore local API boundaries after the data contracts are reviewed.
+5. **OpenCV utilities** — evaluate optional storyboard inspection and media validation helpers.
+6. **Parameter tuning module** — define reproducible configuration profiles and reviewable parameter changes.
+7. **Local deployment documentation** — document installation and operation only after a runnable implementation exists.
+8. **Batch rendering and export** — investigate only after provider integration, safety controls, and tests are available.
+
+Roadmap work will be tracked through public issues. A roadmap item is not considered implemented until code, tests, and documentation are merged into the repository.
+
+## Codex API Usage Statement
+
+Any Codex or OpenAI API credits granted through the Codex for Open Source program will be used exclusively to maintain this public open-source repository. Eligible maintenance work includes:
+
+- iterating on Codex Skill YAML metadata and workflow definitions;
+- triaging and responding to repository issues;
+- writing and reviewing documentation;
+- reviewing configuration changes; and
+- supporting pull-request, release, and other core repository-maintenance workflows.
+
+Credits will **not** be used for commercial video generation, video-model inference, final-media production, paid client work, or operating a commercial content-generation service.
+
+This statement reflects the repository's current public scope and is intended to remain aligned with the Codex for Open Source application.
+
+## Maintenance
+
+`binn8888` is the repository owner and primary maintainer. Maintenance includes issue triage, focused Skill and YAML updates, documentation review, configuration review, and versioned releases when changes are ready.
+
+Contributions should describe the current behavior accurately, keep implemented capabilities separate from Roadmap proposals, and avoid claims that cannot be verified from the public repository.
+
+## Contributing
+
+1. Open an issue describing the proposed change.
+2. Keep changes focused on Codex Skill workflows, metadata, documentation, or clearly labeled Roadmap design work.
+3. Validate edited YAML before submission.
+4. Explain how the change preserves the boundary between current functionality and future plans.
+5. Submit a pull request for maintainer review.
 
 ## License
 
-[MIT License](LICENSE)
+This project is licensed under the [MIT License](LICENSE).
